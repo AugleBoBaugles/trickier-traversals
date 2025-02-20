@@ -12,9 +12,7 @@ public class Traversals {
    */
   public static int sumLeafNodes(TreeNode<Integer> node) {
     // base case
-    if (node == null) {
-      return 0;
-    }
+    if (node == null) return 0;
 
     int sum = 0;
 
@@ -41,9 +39,7 @@ public class Traversals {
    */
   public static int countInternalNodes(TreeNode<Integer> node) {
     // base case
-    if (node == null){
-      return 0;
-    }
+    if (node == null) return 0;
 
     int count = 0;
 
@@ -73,7 +69,23 @@ public class Traversals {
    * @return a post-order traversal string, or an empty string if the tree is null
    */
   public static <T> String buildPostOrderString(TreeNode<T> node) {
-    return null;
+    // base case
+    if (node == null) return "";
+
+    // string variable
+    String totalString = "";
+
+    // go left
+    totalString += buildPostOrderString(node.left);
+
+    // go right
+    totalString += buildPostOrderString(node.right);
+
+    // handle problem
+    totalString += node.value;
+
+    // return string
+    return totalString;
   }
 
   /**
