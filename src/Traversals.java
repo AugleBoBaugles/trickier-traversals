@@ -130,7 +130,26 @@ public class Traversals {
    * @return the number of unique values in the tree, or 0 if the tree is null
    */
   public static int countDistinctValues(TreeNode<Integer> node) {
-    return 0;
+    Set<Integer> intSet = new HashSet<>();
+    return countDistinctValues(node, intSet).size();
+
+  }
+
+  private static Set<Integer> countDistinctValues(TreeNode<Integer> node, Set<Integer> set){
+    // base case
+    if (node == null) return set;
+
+    // handle data
+    set.add(node.value);
+   
+    // go left
+    set = countDistinctValues(node.left, set);
+    
+    // go right
+    set = countDistinctValues(node.right, set);
+
+    // return set
+    return set;
   }
 
   /**
